@@ -1,5 +1,4 @@
-# netology_ansible_part2
-Ansible NETOLOGY part 2
+# Светиков И.А. ДЗ Ansible часть 2
 
 ### Задание 1
 
