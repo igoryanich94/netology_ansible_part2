@@ -13,6 +13,27 @@ Ansible NETOLOGY part 2
 2. Установить пакет tuned из стандартного репозитория вашей ОС. Запустить его, как демон — конфигурационный файл systemd появится автоматически при установке. Добавить tuned в автозагрузку.
 3. Изменить приветствие системы (motd) при входе на любое другое. Пожалуйста, в этом задании используйте переменную для задания приветствия. Переменную можно задавать любым удобным способом.
 
+**список хостов**
+
+```
+---
+all:
+  hosts:
+    server1:
+      ansible_host: 192.168.56.101
+    server2:
+      ansible_host: 192.168.56.3
+```
+
+**переменные для хостов**
+
+```
+---
+ansible_user: igoryanich
+ansible_ssh_private_key_file: /home/igoryanich/.ssh/id_rsa
+hello_var: 'printf ""{{ ansible_nodename }}" "{{ ansible_enp0s8.ipv4.address }}" GOODLUCK"'
+```
+
 Плейбук 1:
 /playbooks/playbook1.yml
 
@@ -42,8 +63,39 @@ Ansible NETOLOGY part 2
 Плейбук 2:
 /playbooks/playbook2.yml
 
+```
+---
+- name: "APT and systemctl"
+  hosts: all
+  become: yes
+  connection: ssh
+  tasks:
+    - name: "download from APT"
+      ansible.builtin.apt:
+        name: tuned
+        state: present
+
+    - name: "launch tuned"
+      ansible.builtin.systemd_service:
+        name: tuned
+        enabled: yes
+        state: started
+```
 Плейбук 3:
 /playbooks/playbook3.yml
+
+```
+- name: "change MOTD"
+  hosts: all
+  become: yes
+  connection: ssh
+  tasks:
+    - name: "Insert"
+      ansible.builtin.lineinfile:
+        dest: /etc/update-motd.d/00-header
+        line: "{{ hello_var }}"
+        create: yes
+```
 
 ### Задание 2
 
@@ -51,7 +103,7 @@ Ansible NETOLOGY part 2
 
 Модифицируйте плейбук из пункта 3, задания 1. В качестве приветствия он должен установить IP-адрес и hostname управляемого хоста, пожелание хорошего дня системному администратору. 
 
-/playbooks/playbook3.yml
+**(смотри /playbooks/playbook3.yml)**
 
 
 ### Задание 3
@@ -73,4 +125,6 @@ Ansible NETOLOGY part 2
 - разместите архив созданной роли у себя на Google диске и приложите ссылку на роль в своём решении;
 - предоставьте скриншоты выполнения плейбука;
 - предоставьте скриншот браузера, отображающего сконфигурированный index.html в качестве сайта.
+
+  
 
