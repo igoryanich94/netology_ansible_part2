@@ -128,7 +128,14 @@ hello_var: 'printf ""{{ ansible_nodename }}" "{{ ansible_enp0s8.ipv4.address }}"
 
   **смотри /playbooks/playbook4.yml**
 
-  
+~выполнение плейбука~
+![img1](https://github.com/igoryanich94/netology_ansible_part2/blob/main/playbooks/img/img1.png)  
+~проверка доступности~
+![img2](https://github.com/igoryanich94/netology_ansible_part2/blob/main/playbooks/img/img2.png)
+~отображение информации с первой машины~
+![img3](https://github.com/igoryanich94/netology_ansible_part2/blob/main/playbooks/img/img3.png)
+~отображение информации со второй машины~
+![img4](https://github.com/igoryanich94/netology_ansible_part2/blob/main/playbooks/img/img4.png)
 
   
 
