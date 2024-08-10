@@ -1,0 +1,20 @@
+---
+- name: "Download and unarchive"
+  hosts: all
+  become: yes
+  connection: ssh
+  
+  tasks:
+  - name: "download archive from"
+    ansible.builtin.get_url:
+          url: 'https://downloads.apache.org/kafka/3.8.0/kafka-3.8.0-src.tgz'
+          dest: /home/igoryanich/downd.tgz
+          mode: 0775
+          owner: igoryanich
+          group: igoryanich
+
+  - name: "unarchive"
+    ansible.builtin.unarchive:
+          src: /home/igoryanich/downd.tgz
+          dest: /home/igoryanich/
+          remote_src: yes

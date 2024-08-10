@@ -1,0 +1,10 @@
+- name: "change MOTD"
+  hosts: all
+  become: yes
+  connection: ssh
+  tasks:
+    - name: "Insert"
+      ansible.builtin.lineinfile:
+        dest: /etc/update-motd.d/00-header
+        line: "{{ hello_var }}"
+        create: yes

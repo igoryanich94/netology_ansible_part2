@@ -1,0 +1,8 @@
+---
+- name: roles
+  hosts: all
+  become: true
+  roles:
+    - apache
+  vars:
+    index_site: /var/www/example

@@ -1,0 +1,4 @@
+---
+ansible_user: igoryanich
+ansible_ssh_private_key_file: /home/igoryanich/.ssh/id_rsa
+hello_var: 'printf ""{{ ansible_nodename }}" "{{ ansible_enp0s8.ipv4.address }}" GOODLUCK"'

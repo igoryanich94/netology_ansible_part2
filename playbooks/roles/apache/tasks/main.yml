@@ -1,0 +1,37 @@
+---
+#- name: Update APT
+#  ansible.builtin.apt: 
+#        update_cashe=yes
+
+- name: Install apache2
+  ansible.builtin.apt:
+    name:
+      - apache2
+    state: latest
+    
+- name: create directory
+  ansible.builtin.file:
+    path: /var/www/example
+    state: directory
+
+- name: create HTML file
+  ansible.builtin.template:
+    src: index.tpl
+    dest: /var/www/example/index.html
+    owner: igoryanich
+    group: igoryanich
+
+- name: configure apache2
+  ansible.builtin.template:
+    src: vhost.tpl
+    dest: /etc/apache2/sites-available/000-default.conf
+  notify: restart apache2
+
+
+        
+# handlers:
+# - name: restart apache2
+#  ansible.builtin.service:
+#      name: apache2
+#     state: restarted
+        
