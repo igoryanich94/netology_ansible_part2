@@ -126,5 +126,9 @@ hello_var: 'printf ""{{ ansible_nodename }}" "{{ ansible_enp0s8.ipv4.address }}"
 - предоставьте скриншоты выполнения плейбука;
 - предоставьте скриншот браузера, отображающего сконфигурированный index.html в качестве сайта.
 
+  **смотри /playbooks/playbook4.yml**
+
+  
+
   
 
