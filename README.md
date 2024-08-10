@@ -13,7 +13,37 @@ Ansible NETOLOGY part 2
 2. Установить пакет tuned из стандартного репозитория вашей ОС. Запустить его, как демон — конфигурационный файл systemd появится автоматически при установке. Добавить tuned в автозагрузку.
 3. Изменить приветствие системы (motd) при входе на любое другое. Пожалуйста, в этом задании используйте переменную для задания приветствия. Переменную можно задавать любым удобным способом.
 
+Плейбук 1:
+/playbooks/playbook1.yml
 
+,,,
+---
+- name: "Download and unarchive"
+  hosts: all
+  become: yes
+  connection: ssh
+  
+  tasks:
+  - name: "download archive from"
+    ansible.builtin.get_url:
+          url: 'https://downloads.apache.org/kafka/3.8.0/kafka-3.8.0-src.tgz'
+          dest: /home/igoryanich/downd.tgz
+          mode: 0775
+          owner: igoryanich
+          group: igoryanich
+
+  - name: "unarchive"
+    ansible.builtin.unarchive:
+          src: /home/igoryanich/downd.tgz
+          dest: /home/igoryanich/
+          remote_src: yes
+,,,
+
+Плейбук 2:
+/playbooks/playbook2.yml
+
+Плейбук 3:
+/playbooks/playbook3.yml
 
 ### Задание 2
 
@@ -21,6 +51,7 @@ Ansible NETOLOGY part 2
 
 Модифицируйте плейбук из пункта 3, задания 1. В качестве приветствия он должен установить IP-адрес и hostname управляемого хоста, пожелание хорошего дня системному администратору. 
 
+/playbooks/playbook3.yml
 
 
 ### Задание 3
