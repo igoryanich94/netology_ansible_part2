@@ -136,5 +136,4 @@ hello_var: 'printf ""{{ ansible_nodename }}" "{{ ansible_enp0s8.ipv4.address }}"
 *отображение информации со второй машины*
 ![img4](https://github.com/igoryanich94/netology_ansible_part2/blob/main/playbooks/img/img4.png)
 
-  
-
+Проверка гита
