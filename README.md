@@ -16,7 +16,7 @@ Ansible NETOLOGY part 2
 Плейбук 1:
 /playbooks/playbook1.yml
 
-,,,
+```
 ---
 - name: "Download and unarchive"
   hosts: all
@@ -37,7 +37,7 @@ Ansible NETOLOGY part 2
           src: /home/igoryanich/downd.tgz
           dest: /home/igoryanich/
           remote_src: yes
-,,,
+```
 
 Плейбук 2:
 /playbooks/playbook2.yml
